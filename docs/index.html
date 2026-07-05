@@ -12,42 +12,65 @@
       <h1>OSC Hub Modules</h1>
       <p class="subtitle">Установка модулей одной кнопкой. Требуется OSC Hub для Windows.</p>
     </header>
-    <div id="catalog" class="grid"></div>
+    <div id="catalog"></div>
     <p id="fallback" class="fallback" hidden>Не удалось загрузить каталог.</p>
   </main>
   <script>
-    function installHref(module) {
+    function installHref(entry) {
       const params = new URLSearchParams({
-        url: module.url,
-        sha256: module.sha256,
-        moduleId: module.id
+        url: entry.url,
+        sha256: entry.sha256
       });
+      if (entry.kind === 'sdk') {
+        return `oschub://sdk?${params.toString()}`;
+      }
+      params.set('moduleId', entry.id);
       return `oschub://module?${params.toString()}`;
+    }
+
+    function renderCard(entry, installLabel) {
+      const minHost = entry.minHostVersion
+        ? `<p class="meta">min host v${entry.minHostVersion}</p>`
+        : '';
+      return `
+        <article class="card${entry.kind === 'sdk' ? ' card-sdk' : ''}">
+          <div class="card-top">
+            <h2>${entry.displayName || entry.id}</h2>
+            <span class="version">v${entry.version || '?'}</span>
+          </div>
+          <p class="description">${entry.description || ''}</p>
+          ${minHost}
+          <div class="actions">
+            <a class="btn primary" href="${installHref(entry)}">${installLabel}</a>
+            ${entry.repo ? `<a class="btn" href="https://github.com/${entry.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}
+          </div>
+        </article>`;
     }
 
     function renderCatalog(data) {
       const root = document.getElementById('catalog');
-      const entries = Object.entries(data).map(([id, m]) => ({ id, ...m }));
-      entries.sort((a, b) => (a.displayName || a.id).localeCompare(b.displayName || b.id, 'ru'));
+      const entries = Object.entries(data).map(([id, m]) => ({ id, kind: 'module', ...m }));
+      const sdk = entries.filter(m => m.kind === 'sdk');
+      const modules = entries.filter(m => m.kind !== 'sdk');
+      modules.sort((a, b) => (a.displayName || a.id).localeCompare(b.displayName || b.id, 'ru'));
 
       if (!entries.length) {
         document.getElementById('fallback').hidden = false;
         return;
       }
 
-      root.innerHTML = entries.map(m => `
-        <article class="card">
-          <div class="card-top">
-            <h2>${m.displayName || m.id}</h2>
-            <span class="version">v${m.version || '?'}</span>
-          </div>
-          <p class="description">${m.description || ''}</p>
-          <div class="actions">
-            <a class="btn primary" href="${installHref(m)}">Установить в OSC Hub</a>
-            ${m.repo ? `<a class="btn" href="https://github.com/${m.repo}" target="_blank" rel="noopener">GitHub</a>` : ''}
-          </div>
-        </article>
-      `).join('');
+      let html = '';
+      if (sdk.length) {
+        html += '<section class="section"><h2 class="section-title">Platform SDK</h2><div class="grid section-grid">';
+        html += sdk.map(m => renderCard(m, 'Обновить SDK')).join('');
+        html += '</div></section>';
+      }
+      if (modules.length) {
+        html += '<section class="section"><h2 class="section-title">Modules</h2><div class="grid section-grid">';
+        html += modules.map(m => renderCard(m, 'Установить в OSC Hub')).join('');
+        html += '</div></section>';
+      }
+      root.innerHTML = html;
     }
 
     fetch('modules.json')
