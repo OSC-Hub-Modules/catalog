@@ -1,0 +1,90 @@
+:root {
+  color-scheme: dark;
+  font-family: Segoe UI, system-ui, sans-serif;
+  background: #0f1115;
+  color: #e8eaed;
+}
+
+body { margin: 0; }
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.header h1 { margin: 0 0 0.5rem; }
+
+.subtitle {
+  margin: 0;
+  color: #aab2c0;
+}
+
+.subtitle a { color: #5b8def; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: #1a1f28;
+  border: 1px solid #2a3140;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.version {
+  color: #7a8494;
+  font-size: 0.85rem;
+}
+
+.description {
+  margin: 0.75rem 0 1rem;
+  color: #aab2c0;
+  font-size: 0.9rem;
+  min-height: 2.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #3a4254;
+  background: #2a3140;
+  color: #e8eaed;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.btn:hover { border-color: #5b8def; }
+
+.btn.primary {
+  background: #243049;
+  border-color: #3a4d6e;
+}
+
+.fallback {
+  color: #ff8a80;
+  margin-top: 1rem;
+}
