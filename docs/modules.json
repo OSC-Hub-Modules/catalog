@@ -39,5 +39,35 @@
                             "url":  "https://github.com/OSC-Hub-Modules/headset-battery/releases/download/v1.0.0/headset-battery.hubmodule",
                             "sha256":  "36504321d0e0c51a994bd90519f82c316e7c54489ac723f16f0a1ec0d7dfc084",
                             "publishedAt":  "2026-07-06"
-                        }
+                        },
+    "heartrate":  {
+                      "kind":  "module",
+                      "displayName":  "Heart Rate",
+                      "description":  "Heart Rate",
+                      "version":  "1.0.0",
+                      "repo":  "OSC-Hub-Modules/heartrate",
+                      "url":  "https://github.com/OSC-Hub-Modules/heartrate/releases/download/v1.0.0/heartrate.hubmodule",
+                      "sha256":  "76ed18448bbecfedac683a759c3802c50e2cef6950478ba9273d339fad3eef97",
+                      "publishedAt":  "2026-07-06"
+                  },
+    "avatar-presets":  {
+                           "kind":  "module",
+                           "displayName":  "Avatar Presets",
+                           "description":  "Avatar Presets",
+                           "version":  "1.0.0",
+                           "repo":  "OSC-Hub-Modules/avatar-presets",
+                           "url":  "https://github.com/OSC-Hub-Modules/avatar-presets/releases/download/v1.0.0/avatar-presets.hubmodule",
+                           "sha256":  "d8c6df6eb8c205342b12a76d9b0be28fc95f0514bfb3f9bc5f64e4cb0ab99e24",
+                           "publishedAt":  "2026-07-06"
+                       },
+    "vrcx-db":  {
+                    "kind":  "module",
+                    "displayName":  "VRCX Database",
+                    "description":  "VRCX Database",
+                    "version":  "1.0.0",
+                    "repo":  "OSC-Hub-Modules/vrcx-db",
+                    "url":  "https://github.com/OSC-Hub-Modules/vrcx-db/releases/download/v1.0.0/vrcx-db.hubmodule",
+                    "sha256":  "d07fbdd7683846bc8f69a78fc5e59e9d186efe589d65121bd76c796e03beb13f",
+                    "publishedAt":  "2026-07-06"
+                }
 }
