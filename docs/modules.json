@@ -3,10 +3,10 @@
                         "kind":  "module",
                         "displayName":  "OSC Chatbox",
                         "description":  "OSC Chatbox",
-                        "version":  "1.0.1",
+                        "version":  "1.0.2",
                         "repo":  "OSC-Hub-Modules/osc-chatbox",
-                        "url":  "https://github.com/OSC-Hub-Modules/osc-chatbox/releases/download/v1.0.1/osc-chatbox.hubmodule",
-                        "sha256":  "e520668c2388acc0445dc149d0df2307363fa4bf9d778a0ca7e4c3e30b1431e6",
+                        "url":  "https://github.com/OSC-Hub-Modules/osc-chatbox/releases/download/v1.0.2/osc-chatbox.hubmodule",
+                        "sha256":  "6cddeaf2ae4d59d82c4ed92dfbdba990ff0ad49d7ddac3885214f84f6841dbe2",
                         "publishedAt":  "2026-07-06"
                     },
     "osc-hub-abstractions":  {
